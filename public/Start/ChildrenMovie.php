@@ -3,12 +3,13 @@ declare(strict_types=1);
 
 namespace App\Start;
 
-class RegularMovie implements Movie
+class ChildrenMovie implements Movie
 {
     /**
      * @var MovieTitle
      */
     private $movieTitle;
+
     /**
      * @var PriceCode
      */
@@ -17,12 +18,9 @@ class RegularMovie implements Movie
     public function __construct(MovieTitle $movieTitle)
     {
         $this->movieTitle = $movieTitle;
-        $this->priceCode = PriceCode::REGULAR;
+        $this->priceCode = PriceCode::CHILDREN;
     }
 
-    /**
-     * @return MovieTitle
-     */
     public function movieTitle(): MovieTitle
     {
         return $this->movieTitle;
@@ -30,9 +28,9 @@ class RegularMovie implements Movie
 
     public function amount(DaysRented $daysRented): Amount
     {
-        $amount = new Amount(2);
-        if ($daysRented->value() > 2) {
-            $amount = $amount->plus(new Amount(($daysRented->value() - 2) * 1.5));
+        $amount = new Amount(1.5);
+        if ($daysRented->value() > 3) {
+            $amount->plus(new Amount(($daysRented->value() - 3) * 1.5));
         }
 
         return $amount;
@@ -40,6 +38,6 @@ class RegularMovie implements Movie
 
     public function renterPoint(DaysRented $daysRented): RentalPoint
     {
-        return new RentalPoint(1);
+        return new RentalPoint(0);
     }
 }
