@@ -15,10 +15,10 @@ class Customer
      */
     private $rentals;
 
-    public function __construct(CustomerName $customerName)
+    public function __construct(CustomerName $customerName, Rentals $rentals)
     {
         $this->customerName = $customerName;
-        $this->rentals = new Rentals([]);
+        $this->rentals = $rentals;
     }
 
     /**
