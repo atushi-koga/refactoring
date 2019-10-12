@@ -5,5 +5,5 @@ namespace App\Start;
 
 interface Invoice
 {
-    public function statement();
+    public function statement(): string;
 }

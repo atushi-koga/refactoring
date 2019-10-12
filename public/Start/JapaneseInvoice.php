@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Start;
 
-class StringInvoice
+class JapaneseInvoice implements Invoice
 {
     /**
      * @var Customer
@@ -17,20 +17,20 @@ class StringInvoice
 
     public function header(CustomerName $customerName): string
     {
-        return "Rental Record for {$customerName->value()} \n";
+        return "会員名: {$customerName->value()} \n";
     }
 
     public function body(Rentals $rentals): string
     {
         return array_reduce($rentals->value(), function (string $carry, Rental $rental) {
-            return $carry .= "Title:{$rental->movieTitle()} Amount:{$rental->amount()->value()} \n";
+            return $carry .= "タイトル: {$rental->movieTitle()} 金額: {$rental->amount()->value()} \n";
         }, '');
     }
 
     public function footer(Amount $amount, RentalPoint $rentalPoint): string
     {
-        $message = "Amount owed is {$amount->value()} \n";
-        $message .= "You earned {$rentalPoint->value()} rental points \n";
+        $message = "合計金額 {$amount->value()} \n";
+        $message .= "獲得ポイント: {$rentalPoint->value()} ポイント\n";
 
         return $message;
     }

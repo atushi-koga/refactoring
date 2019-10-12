@@ -20,6 +20,7 @@ $customer->addRental($rental1);
 $customer->addRental($rental2);
 $customer->addRental($rental3);
 
-$invoice = new StringInvoice($customer);
+//$invoice = new EnglishInvoice($customer);
+$invoice = new JapaneseInvoice($customer);
 
 echo $invoice->statement();
