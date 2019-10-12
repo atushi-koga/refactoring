@@ -1,27 +1,29 @@
 <?php
 declare(strict_types=1);
 
-class RentalPoint
+namespace App\Start;
+
+class Amount
 {
     /**
-     * @var int
+     * @var float
      */
     private $value;
 
-    public function __construct(int $value)
+    public function __construct(float $value)
     {
         $this->value = $value;
     }
 
-    public function plus(self $other): self
+    public function plus(self $other)
     {
         return new self($this->value + $other->value);
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function value(): int
+    public function value(): float
     {
         return $this->value;
     }

@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Start;
+
 class Customer
 {
     /**
@@ -16,6 +18,7 @@ class Customer
     public function __construct(CustomerName $customerName)
     {
         $this->customerName = $customerName;
+        $this->rentals = new Rentals([]);
     }
 
     /**
@@ -36,7 +39,7 @@ class Customer
 
     public function addRental(Rental $rental)
     {
-        $this->rentals[] = $rental;
+        $this->rentals->add($rental);
     }
 
     public function amount(): Amount

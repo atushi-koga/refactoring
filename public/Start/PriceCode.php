@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Start;
+
+use App\Type\Enum\EnumTrait;
+
 class PriceCode
 {
     use EnumTrait;

@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Type\Enum;
+
+use InvalidArgumentException;
+use ReflectionObject;
+
 trait EnumTrait
 {
     private $scalar;

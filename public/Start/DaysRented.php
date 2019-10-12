@@ -1,22 +1,24 @@
 <?php
 declare(strict_types=1);
 
-class MovieTitle
+namespace App\Start;
+
+class DaysRented
 {
     /**
-     * @var string
+     * @var int
      */
     private $value;
 
-    public function __construct(string $value)
+    public function __construct(int $value)
     {
         $this->value = $value;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function value(): string
+    public function value(): int
     {
         return $this->value;
     }

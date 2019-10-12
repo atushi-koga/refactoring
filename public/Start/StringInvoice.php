@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Start;
+
 class StringInvoice
 {
     /**
@@ -15,20 +17,20 @@ class StringInvoice
 
     public function header(CustomerName $customerName): string
     {
-        return "Rental Record for {$customerName->value()}";
+        return "Rental Record for {$customerName->value()} \n";
     }
 
     public function body(Rentals $rentals): string
     {
         return array_reduce($rentals->value(), function (string $carry, Rental $rental) {
-            return $carry .= "{$rental->movieTitle()} {$rental->amount()->value()}";
+            return $carry .= "Title:{$rental->movieTitle()} Amount:{$rental->amount()->value()} \n";
         }, '');
     }
 
     public function footer(Amount $amount, RentalPoint $rentalPoint): string
     {
         $message = "Amount owed is {$amount->value()} \n";
-        $message .= "You earned {$rentalPoint->value()} rental points";
+        $message .= "You earned {$rentalPoint->value()} rental points \n";
 
         return $message;
     }

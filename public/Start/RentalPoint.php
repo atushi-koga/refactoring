@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-class DaysRented
+namespace App\Start;
+
+class RentalPoint
 {
     /**
      * @var int
@@ -11,6 +13,11 @@ class DaysRented
     public function __construct(int $value)
     {
         $this->value = $value;
+    }
+
+    public function plus(self $other): self
+    {
+        return new self($this->value + $other->value);
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Start;
+
 class Rentals
 {
     /** @var Rental[] */
@@ -32,7 +34,7 @@ class Rentals
 
         return array_reduce($this->value, function (Amount $carry, Rental $item) {
             return $carry->plus($item->amount());
-        });
+        }, new Amount(0));
     }
 
     public function rentalPoint(): RentalPoint
@@ -43,7 +45,7 @@ class Rentals
 
         return array_reduce($this->value, function (RentalPoint $carry, Rental $item) {
             return $carry->plus($item->rentalPoint());
-        });
+        }, new RentalPoint(0));
     }
 
 }
